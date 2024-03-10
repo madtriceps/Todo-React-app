@@ -1,23 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
+import  LearningComponent  from './Components/Learning-Examples/LearningComponent';
+import LearningJavascript from './Components/Learning-Examples/LearningJavascript';
+import Counter from './Components/counter/Counter';
+import TodoApp from './Components/Todo/TodoApp'
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Counter/> */}
+      <TodoApp />
     </div>
   );
 }
