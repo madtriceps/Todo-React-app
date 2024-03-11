@@ -1,0 +1,33 @@
+/* Defining a default button css for any button taht we make. If we want any custom changes in button beyond this,we can make separate css below as per need. */
+button{
+    font-size: 30px;
+    width:100px;
+    margin:10px;
+    color:white;
+    padding:15px;
+    border-radius:30px;
+    border-color: black;
+    border-width: 5px;
+    text-shadow:2px 2px;
+
+}
+.counterButton{
+    background-color:#00a5ab;
+}
+.count{
+    font-size: 50px;
+    padding: 20px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+
+}
+
+.totalCount{
+    font-size: 150px;
+    padding: 20px;
+}
+
+.resetButton{
+
+    background-color:#e50000;
+        font-size: 20px;
+}
