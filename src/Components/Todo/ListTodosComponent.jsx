@@ -1,15 +1,37 @@
+import { useEffect, useState } from "react"
+import { retreiveAllTodosForUsername } from "./api/TodoApiService"
+
 export default function ListTodosComponent(){
 
     const today = new Date()
     const targetDate = new Date(today.getFullYear()+12 ,today.getMonth(), today.getDay())
 
-    const todos = [{id:1,description:'Learn AWS Cloud',done:false, targetDate: targetDate},
-                   {id:2,description:'Learn Full Stack Dev', done: false, targetDate:targetDate},
-                   {id:3,description:'Learn Data Science', done: false, targetDate:targetDate},
-                   {id:4,description:'Learn Machine Learning', done: false, targetDate:targetDate},
-                   {id:5,description:'Learn MC Assigments', done: false, targetDate:targetDate}
+    const [todos,setTodos] =useState([])
 
-                  ]
+    //Static todos object built for testing
+    // const todos = [
+    //             //    {id:1,description:'Learn AWS Cloud',done:false, targetDate: targetDate},
+    //             //    {id:2,description:'Learn Full Stack Dev', done: false, targetDate:targetDate},
+    //             //    {id:3,description:'Learn Data Science', done: false, targetDate:targetDate},
+    //             //    {id:4,description:'Learn Machine Learning', done: false, targetDate:targetDate},
+    //             //    {id:5,description:'Learn MC Assigments', done: false, targetDate:targetDate}
+
+    //               ]
+
+    useEffect(() => refreshTodos(),[])
+
+    function refreshTodos(){
+        retreiveAllTodosForUsername('Maddy')
+        .then(
+            (response)=>{
+            // console.log(response)
+            setTodos(response.data)
+            }
+        )
+        .catch((error)=>console.log(error))
+        .finally(console.log('Cleaned Up!'))
+    } 
+
     return(
         <div className="container">
             <h1>Let's get to work !</h1>
@@ -33,7 +55,7 @@ export default function ListTodosComponent(){
                                 <td>{todo.id}</td>
                                 <td>{todo.description}</td>
                                 <td>{todo.done.toString()}</td>
-                                <td>{todo.targetDate.toDateString()}</td>
+                                <td>{todo.targetDate.toString()}</td>
                             </tr>
                             )
                         )
