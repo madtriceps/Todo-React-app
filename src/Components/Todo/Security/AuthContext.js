@@ -10,13 +10,17 @@ export default function AuthProvider({children}) {
 //2.Share the created context with other component
 const [isAuthenticated, setAuthenticated]= useState(false)
 
+const [username , setUsername] = useState(null)
+
 function login(username,password){
         if(username==='Maddy' && password==='1234'){
             setAuthenticated(true);
+            setUsername(username)
             return true;
         }
         else{
-            setAuthenticated(false);  
+            setAuthenticated(false); 
+            setUsername(null)
             return false;          
         }
 }
@@ -26,7 +30,7 @@ function logout() {
 }
 
 return(
-    <AuthContext.Provider value={ {isAuthenticated , login , logout} } >
+    <AuthContext.Provider value={ {isAuthenticated , login , logout , username} } >
         {children}
     </AuthContext.Provider>
 
