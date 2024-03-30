@@ -15,3 +15,9 @@ export const retreiveAllTodosForUsernameAPI
 
  export const retrieveTodoAPI
  = (username , id)=>{ return ApiClient.get(`/users/${username}/todos/${id}`)}
+
+ export const updateTodoAPI
+ = (username , id ,todo)=>{ return ApiClient.put(`/users/${username}/todos/${id}`,todo)}
+
+ export const createTodoAPI
+ = (username , id,todo)=>{ return ApiClient.post(`/users/${username}/todos`,todo)}
