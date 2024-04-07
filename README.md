@@ -59,9 +59,9 @@ If you encounter issues with npm run build failing to minify, refer to:
 Troubleshooting minification
 More Projects
 More Projects
-To view more projects, visit my GitHub
+To view more projects, visit my GitHub: https://github.com/madtriceps
 
-Feel free to connect with me on LinkedIn
+Feel free to connect with me on LinkedIn: https://www.linkedin.com/in/madhav-jha-1b9697252/
 
 Now you can proceed to create, update, and delete todos using this React frontend connected to your Spring Boot backend.
 
