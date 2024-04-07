@@ -19,5 +19,18 @@ export default function retreiveHelloWorldBean(){
 
 //Method 2:Making a lambda function (Another way to call API via Axios) 
 export const retreiveHelloWorldPathVariable
- = (username)=>{ return ApiClient.get(`/hello-world/path-variable/${username}`)}
+ = (username,token)=>{ return ApiClient.get(`/hello-world/path-variable/${username}`,{
+    headers:{
+        Authorization:token
+    }
+ })}
+
+ export const executeBasicAuthenticationService
+ = (token)=>ApiClient.get('/basicauth',{
+    headers:{
+        Authorization: token
+        }
+    }
+ )
+
 
