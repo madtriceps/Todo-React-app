@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+Todo App with React Frontend
+This project is a frontend for a Todo application where you can create, update, and delete todos. The backend is developed using Spring Boot in a separate project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
+Available Scripts
 In the project directory, you can run:
 
-### `npm start`
+npm start
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in your browser.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
+The page will reload when you make changes.
 You may also see any lint errors in the console.
 
-### `npm test`
+npm test
+Launches the test runner in the interactive watch mode.
+See the section about running tests for more information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
+npm run build
+Builds the app for production to the build folder.
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
+The build is minified, and the filenames include the hashes.
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+How to Use
+Ensure the backend Spring Boot application is running.
 
-### `npm run eject`
+Clone this repository.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Run npm install to install dependencies.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a .env file in the root directory with the following:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+arduino
+Copy code
+REACT_APP_BACKEND_URL=http://localhost:8080
+Replace http://localhost:8080 with the URL where your Spring Boot backend is running if different.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Run npm start to start the React app.
 
-## Learn More
+Open http://localhost:3000 to view the Todo app in your browser.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Learn More
+You can learn more about Create React App and React in the following documentation:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Create React App documentation
+React documentation
+Additional Resources
+For more advanced configurations, code splitting, analyzing bundle size, or making a Progressive Web App (PWA), refer to the respective documentation:
 
-### Code Splitting
+Code Splitting
+Analyzing the Bundle Size
+Making a Progressive Web App
+Advanced Configuration
+Deployment
+Troubleshooting
+If you encounter issues with npm run build failing to minify, refer to:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Troubleshooting minification
+More Projects
+To view more projects, visit my GitHub: madtriceps
 
-### Analyzing the Bundle Size
+Feel free to connect with me on LinkedIn: Madhav Jha
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Now you can proceed to create, update, and delete todos using this React frontend connected to your Spring Boot backend.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
