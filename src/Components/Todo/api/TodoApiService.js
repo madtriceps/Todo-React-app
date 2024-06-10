@@ -1,23 +1,16 @@
-import Axios from "axios";
-
-const ApiClient=Axios.create(
-    {
-        baseURL:'http://localhost:8080',
-        withCredentials: true,
-    }
-);
+import { apiClient } from "./ApiClient"
 
 export const retreiveAllTodosForUsernameAPI
- = (username)=>{ return ApiClient.get(`/users/${username}/todos`)}
+ = (username)=>{ return apiClient.get(`/users/${username}/todos`)}
 
  export const deleteTodoAPI
- = (username , id)=>{ return ApiClient.delete(`/users/${username}/todos/${id}`)}
+ = (username , id)=>{ return apiClient.delete(`/users/${username}/todos/${id}`)}
 
  export const retrieveTodoAPI
- = (username , id)=>{ return ApiClient.get(`/users/${username}/todos/${id}`)}
+ = (username , id)=>{ return apiClient.get(`/users/${username}/todos/${id}`)}
 
  export const updateTodoAPI
- = (username , id ,todo)=>{ return ApiClient.put(`/users/${username}/todos/${id}`,todo)}
+ = (username , id ,todo)=>{ return apiClient.put(`/users/${username}/todos/${id}`,todo)}
 
  export const createTodoAPI
- = (username , id,todo)=>{ return ApiClient.post(`/users/${username}/todos`,todo)}
+ = (username , id,todo)=>{ return apiClient.post(`/users/${username}/todos`,todo)}

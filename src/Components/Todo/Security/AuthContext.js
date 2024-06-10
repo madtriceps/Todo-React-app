@@ -1,77 +1,111 @@
-import { Children, createContext, useContext, useState } from "react";
-import { executeBasicAuthenticationService } from "../api/HelloWorldApiService";
+import { createContext, useContext, useState } from "react";
+import { apiClient } from "../api/ApiClient";
+import { executeJwtAuthenticationService } from "../api/AuthenticationApiService";
 
-//1.Create Context
-export const AuthContext = createContext();
+//1: Create a Context
+export const AuthContext = createContext()
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext)
 
-export default function AuthProvider({children}) {
+//2: Share the created context with other components
+export default function AuthProvider({ children }) {
 
-//2.Share the created context with other component
-const [isAuthenticated, setAuthenticated]= useState(false)
+    //3: Put some state in the context
+    const [isAuthenticated, setAuthenticated] = useState(false)
 
-const [username , setUsername] = useState(null)
+    const [username, setUsername] = useState(null)
 
-const [token,setToken] = useState(null)
-// function login(username,password){
-//     if(username==='Maddy' && password==='1234'){
-//         setAuthenticated(true);
-//         setUsername(username)
-//         return true;
-//     }
-//     else{
-//         setAuthenticated(false); 
-//         setUsername(null)
-//         return false;          
-//     }
-// }
+    const [token, setToken] = useState(null)
 
-async function login(username,password){
-    const baToken = 'Basic '+ window.btoa(username+ ":" +password)
-    try{
-    const response  = await executeBasicAuthenticationService(baToken)
-
-    if(response.status==200){
-        setAuthenticated(true);
-         setUsername(username)
-         setToken(baToken)
-         return true;
-        
-    }
-    else{
-         logout()        
-         }
-    }
-    catch(error){
-        logout()
-         return false;
-
-    } 
-
-
-    //This was the hardcoded auth before we used spring security in backend
-    // if(username==='Maddy' && password==='1234'){
-    //     setAuthenticated(true);
-    //     setUsername(username)
-    //     return true;
+    // function login(username, password) {
+    //     if(username==='in28minutes' && password==='dummy'){
+    //         setAuthenticated(true)
+    //         setUsername(username)
+    //         return true            
+    //     } else {
+    //         setAuthenticated(false)
+    //         setUsername(null)
+    //         return false
+    //     }        
     // }
-    // else{
-    //     setAuthenticated(false); 
-    //     setUsername(null)
-    //     return false;          
+
+    // async function login(username, password) {
+
+    //     const baToken = 'Basic ' + window.btoa( username + ":" + password )
+
+    //     try {
+
+    //         const response = await executeBasicAuthenticationService(baToken)
+
+    //         if(response.status==200){
+    //             setAuthenticated(true)
+    //             setUsername(username)
+    //             setToken(baToken)
+
+    //             apiClient.interceptors.request.use(
+    //                 (config) => {
+    //                     console.log('intercepting and adding a token')
+    //                     config.headers.Authorization = baToken
+    //                     return config
+    //                 }
+    //             )
+
+    //             return true            
+    //         } else {
+    //             logout()
+    //             return false
+    //         }    
+    //     } catch(error) {
+    //         logout()
+    //         return false
+    //     }
     // }
-}
 
-function logout() {
-    setAuthenticated(false);
-}
 
-return(
-    <AuthContext.Provider value={ {isAuthenticated , login , logout , username , token} } >
-        {children}
-    </AuthContext.Provider>
+    async function login(username, password) {
 
-)
+        try {
 
-}
+            const response = await executeJwtAuthenticationService(username, password)
+
+            if(response.status===200){
+                
+                const jwtToken = 'Bearer ' + response.data.token
+                
+                
+                setAuthenticated(true)
+                setUsername(username)
+                setToken(jwtToken)
+
+                apiClient.interceptors.request.use(
+                    (config) => {
+                        console.log('intercepting and adding a token')
+                        config.headers.Authorization = jwtToken
+                        return config
+                    }
+                )
+
+                return true            
+            } else {
+                logout()
+                return false
+            }    
+        } catch(error) {
+            logout()
+            return false
+        }
+    }
+
+
+    function logout() {
+        setAuthenticated(false)
+        setToken(null)
+        setUsername(null)
+    }
+
+    return (
+        <AuthContext.Provider value={ {isAuthenticated, login, logout, username, token}  }>
+            {children}
+        </AuthContext.Provider>
+    )
+} 
